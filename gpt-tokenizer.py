@@ -8,8 +8,15 @@ def read_file(relative_file_path) -> str:
 
 tokenizer = tiktoken.get_encoding("gpt2")
 
-tokenized_text = tokenizer.encode(read_file("the-verdict.txt"), allowed_special={"<|endoftext|>"})
-print(tokenized_text[:50])
+encoded_text = tokenizer.encode(read_file("the-verdict.txt"), allowed_special={"<|endoftext|>"})
 
-strings = tokenizer.decode(tokenized_text)
-print(strings[:50])
+sample_size = 16
+encoded_sample = encoded_text[:sample_size]
+print(f"The first {sample_size} tokens are: {encoded_sample}")
+
+context_size = 4
+for i in range(1, context_size+1):
+    context = encoded_sample[:i]
+    desired = encoded_sample[i]
+    print(tokenizer.decode(context), "--->", tokenizer.decode([desired]))
+
