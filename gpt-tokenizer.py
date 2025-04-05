@@ -8,7 +8,7 @@ def read_file(relative_file_path) -> str:
 
 tokenizer = tiktoken.get_encoding("gpt2")
 
-encoded_text = tokenizer.encode(read_file("the-verdict.txt"), allowed_special={"<|endoftext|>"})
+encoded_text = tokenizer.encode(read_file("data/the-verdict.txt"), allowed_special={"<|endoftext|>"})
 
 sample_size = 16
 encoded_sample = encoded_text[:sample_size]

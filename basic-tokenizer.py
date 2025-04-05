@@ -63,8 +63,8 @@ class SimpleTokenizerV1:
         return text
 
 def main():
-    file_path = "the-verdict.txt"
-    raw_text = read_file(file_path)
+    relative_file_path = "data/the-verdict.txt"
+    raw_text = read_file(relative_file_path)
 
     vocab_builder = SimpleVocabBuilderV1()
     vocab = vocab_builder.build_vocab(raw_text)
