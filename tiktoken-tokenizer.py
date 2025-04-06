@@ -8,8 +8,10 @@ def read_file(relative_file_path) -> str:
 
 tokenizer = tiktoken.get_encoding("gpt2")
 
+# Encode using byte-pair encoding
 encoded_text = tokenizer.encode(read_file("data/the-verdict.txt"), allowed_special={"<|endoftext|>"})
 
+# Test with a small sample size
 sample_size = 16
 encoded_sample = encoded_text[:sample_size]
 print(f"The first {sample_size} tokens are: {encoded_sample}")
