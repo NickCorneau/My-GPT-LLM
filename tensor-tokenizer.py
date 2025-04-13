@@ -40,6 +40,7 @@ def read_file(relative_file_path) -> str:
         raw_text = f.read()
     return raw_text
 
+# testing our encoder on a random file
 raw_text = read_file("data/the-verdict.txt")
 dataloader = create_dataloader_v1(
         raw_text, batch_size=1, max_length=6, stride=4, shuffle=False
@@ -48,3 +49,19 @@ data_iter = iter(dataloader)
 first_batch = next(data_iter)
 print(first_batch)
 
+
+# testing embedding vectors
+input_ids = torch.tensor([2,3,5,1])
+vocab_size = 6
+output_dim = 3
+torch.manual_seed(123)
+embedding_layer = torch.nn.Embedding(vocab_size, output_dim)
+
+print("\nRandomly generated embedding matrix: ")
+print(embedding_layer.weight)
+
+print("\nManually selected input_ids for the example: ")
+print(input_ids)
+
+print("\nEmbedding vectors (matrix) associated to the input_ids: ")
+print(embedding_layer(input_ids))
